@@ -1,0 +1,52 @@
+---
+title: " A5 Index"
+author: "Ryan Leung"
+date: "May 4, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(leaflet)
+source("analysis.R")
+```
+
+## Summary Information
+[original data source](https://www.gunviolencearchive.org/reports/mass-shooting)
+
+  Within the mass shooting dataset, there are `r number_of_shootings` shootings. The total 
+ number killed is `r number_killed`, and the city most impacted by mass shootings is 
+ `r most_impacted`. Most impacted is defined as most number of injuries occurred within a  city. The average amount of deaths per mass shooting is `r avg_deaths` deaths, and the most number of injuries for a given shooting is `r max_injured`.
+
+
+## Summary Table
+```{r summary table, echo = FALSE}
+kable(four_st_summ, col.names =  c("state", "total_killed", "total_injured"))
+```
+
+## Shooting Incident in New Orleans | May 2018  
+On `r inc_date`, there was a [shooting](https://www.nola.com/crime/2018/05/last_straw_hours_after_5_shot.html) in `r inc_city`, `r inc_state`. The shooting left `r inc_injured` people injured and `r inc_killed` deaths. From the article,  
+it was said that a local resident had been wanting to move away from the neghborhood due to already high crime rate. All the victims were  
+sent to the hospital. 
+
+## Interactive Map
+This interactive map displays all the mass shootings that occurred in the U.S. based on the mass shootings data set.
+```{r interact map, echo = FALSE}
+shootings_map
+```
+
+- Most of the shootings occur on the eastern part of the U.S.  
+- There are little to no reported shootings along the Western and Northwestern part of the U.S.
+
+## State vs Number of Injured Graph
+```{r my plot, echo = FALSE}
+my_graph
+```
+
+- I chose these states because they're in the centers of majority of shootings.  
+- California, Florida, and Illinois have +100 injuries caused by shootings. 
+- New York and Tennesse have less than 100 injuries caused by shootings.
+
