@@ -94,9 +94,9 @@ inc_injured <- shootings_2018 %>%
 #   information of city, state, number of injured, and number of killed
 shootings_map <- leaflet(shootings_2018) %>%
   addTiles() %>%
-  addMarkers(
-    lng = ~long, lat = ~lat, label = ~paste0(city, ", ", state,
-           ", injured: ", num_injured, ", deaths: ", num_killed )
+  addCircleMarkers(
+    lng = ~long, lat = ~lat, popup = ~paste(city, "<br>", state,
+           "<br>", "injured: ", num_injured, "<br>", "deaths: ", num_killed)
   )
 
 # My own plot
